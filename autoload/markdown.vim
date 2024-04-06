@@ -16,7 +16,7 @@ function! s:Pandoc.generate(theme, restart) abort
   let stylesheet = s:css_path . a:theme . '.css'
   let highlight = s:highlight_path . a:theme . '.theme'
   let input_format = get(g:, 'nvim_markdown_preview_format', 'gfm')
-  let mathjax_path = get(g:, 'nvim_markdown_mathjax_path', 'gfm')
+  let mathjax_path = get(g:, 'nvim_markdown_mathjax_path', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js')
 
   let self.server_index_path = s:output_path
   let self.server_root = fnamemodify(input_path, ':h')
