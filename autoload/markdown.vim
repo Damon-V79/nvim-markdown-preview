@@ -16,6 +16,7 @@ function! s:Pandoc.generate(theme, restart) abort
   let stylesheet = s:css_path . a:theme . '.css'
   let highlight = s:highlight_path . a:theme . '.theme'
   let input_format = get(g:, 'nvim_markdown_preview_format', 'gfm')
+  let mathjax_path = get(g:, 'nvim_markdown_mathjax_path', 'gfm')
 
   let self.server_index_path = s:output_path
   let self.server_root = fnamemodify(input_path, ':h')
@@ -31,7 +32,7 @@ function! s:Pandoc.generate(theme, restart) abort
           \ '-o', s:output_path,
           \ '--standalone',
           \ '-t', 'html',
-          \ '--katex',
+          \ '--mathjax='.mathjax_path,
           \ '--highlight-style='.l:highlight,
           \ '--metadata',
           \ 'pagetitle='.filename,
